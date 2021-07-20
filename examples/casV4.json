@@ -1,0 +1,547 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema#",
+  "definitions": {
+    "assetItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "assetId": {
+          "type": "string"
+        },
+        "asset": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "asset_type": {
+              "type": "string"
+            },
+            "asset_entity_id": {
+              "type": "string"
+            },
+            "photo_link": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "provider": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "id",
+                "provider"
+              ]
+            },
+            "caption": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "raw_annotations": {
+                  "type": "array"
+                },
+                "html_annotations": {
+                  "type": "array"
+                },
+                "raw_text": {
+                  "type": "string"
+                },
+                "html_text": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "html_annotations",
+                "html_text",
+                "raw_annotations",
+                "raw_text"
+              ]
+            },
+            "credit": {
+              "type": "string"
+            },
+            "media_pools": {
+              "type": "array"
+            },
+            "crops": {
+              "type": "array"
+            },
+            "xxl_crop": {
+              "type": "boolean"
+            },
+            "focus_point": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "x": {
+                  "type": "number"
+                },
+                "y": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "x",
+                "y"
+              ]
+            },
+            "content": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "raw_annotations": {
+                      "type": "array"
+                    },
+                    "html_annotations": {
+                      "type": "array"
+                    },
+                    "raw_text": {
+                      "type": "string"
+                    },
+                    "html_text": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "html_annotations",
+                    "html_text",
+                    "raw_annotations",
+                    "raw_text"
+                  ]
+                }
+              ]
+            },
+            "author": {
+              "type": "string"
+            },
+            "organisation": {
+              "type": "string"
+            },
+            "channel": {
+              "type": "string"
+            },
+            "title": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "raw_annotations": {
+                  "type": "array"
+                },
+                "html_annotations": {
+                  "type": "array"
+                }
+              },
+              "required": [
+                "html_annotations",
+                "raw_annotations"
+              ]
+            },
+            "text": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "raw_annotations": {
+                      "type": "array"
+                    },
+                    "html_annotations": {
+                      "type": "array"
+                    }
+                  },
+                  "required": [
+                    "html_annotations",
+                    "raw_annotations"
+                  ]
+                }
+              ]
+            },
+            "video_service_id": {
+              "type": "string"
+            },
+            "poll_link": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "provider": {
+                  "type": "string"
+                },
+                "id": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "provider"
+              ]
+            },
+            "instagram_id": {
+              "type": "string"
+            },
+            "author_id": {
+              "type": "string"
+            },
+            "date": {
+              "type": "string"
+            },
+            "tweet_id": {
+              "type": "string"
+            },
+            "spotify_id": {
+              "type": "string"
+            },
+            "facebook_id": {
+              "type": "string"
+            },
+            "name": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "scale": {
+              "type": "integer"
+            },
+            "ratings": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "rating": {
+                    "type": "integer"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "url": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "name",
+                  "rating",
+                  "url"
+                ]
+              }
+            }
+          },
+          "required": [
+            "asset_type"
+          ]
+        }
+      },
+      "required": [
+        "asset",
+        "assetId"
+      ]
+    },
+    "structuredText": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "rawText": {
+          "type": "string"
+        },
+        "textType": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "rawText",
+        "textType"
+      ]
+    }
+  },
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": "v4"
+    },
+    "contentType": {
+      "type": "string"
+    },
+    "articleId": {
+      "type": "integer"
+    },
+    "shortId": {
+      "type": "string"
+    },
+    "brand": {
+      "type": "string"
+    },
+    "urn": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "bsid"
+          ]
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "history": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "arns"
+          ]
+        },
+        "value": {
+          "type": "array",
+          "description": "A history of services this event was processed by",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "arn": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "arn"
+            ]
+          }
+        }
+      },
+      "required": [
+        "type",
+        "value"
+      ]
+
+    },
+    "title": {
+      "type": "string"
+    },
+    "author": {
+      "type": "string"
+    },
+    "articleType": {
+      "type": "string"
+    },
+    "publicationDate": {
+      "type": "string"
+    },
+    "publicationTimeStamp": {
+      "type": "integer"
+    },
+    "published": {
+      "type": "boolean"
+    },
+    "payWall": {
+      "type": "boolean"
+    },
+    "majorVersion": {
+      "type": "string"
+    },
+    "minorVersion": {
+      "type": "string"
+    },
+    "structuredText": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/structuredText"
+      }
+    },
+    "url": {
+      "type": "string"
+    },
+    "imageUrlLarge": {
+      "type": "string"
+    },
+    "imageUrl": {
+      "type": "string"
+    },
+    "mainSection": {
+      "type": "string"
+    },
+    "sectionPath": {
+      "type": "string"
+    },
+    "brands": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "brandPublications": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "firstPublicationDate": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "firstPublicationDate",
+          "name"
+        ]
+      }
+    },
+    "firstPublicationDate": {
+      "type": "string"
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/assetItem"
+      }
+    },
+    "category": {
+      "type": "string"
+    },
+    "label": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "subLabel": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "authorNames": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "experimental": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "storyId": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "event": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string",
+          "enum": [
+            "PUBLISH",
+            "UPDATE_CONTENT",
+            "UPDATE_PUBLISH_INFO",
+            "UPDATE_ALL",
+            "UNPUBLISH",
+            "CREATE_DRAFT",
+            "UPDATE_DRAFT_ALL",
+            "UPDATE_DRAFT_CONTENT",
+            "UPDATE_DRAFT_PUBLISH_INFO"
+          ]
+        }
+      }
+    },
+    "desk": {
+      "type": "string"
+    },
+    "authorData": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "publishFeed": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "name": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "story": {
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "collaboratorId": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "medium": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "collaboratorId",
+                  "medium",
+                  "name"
+                ]
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "publishfeed",
+        "story"
+      ]
+    },
+    "$schema": {
+      "const": "https://schemas.cia.dpgmedia.cloud/casV4.json"
+    }
+  },
+  "required": [
+    "urn",
+    "articleType",
+    "brand",
+    "contentType",
+    "firstPublicationDate",
+    "mainSection",
+    "payWall",
+    "publicationDate",
+    "publicationTimeStamp",
+    "published",
+    "schemaVersion",
+    "structuredText",
+    "title",
+    "url",
+    "schema",
+    "event",
+    "authorData",
+    "$schema"
+  ]
+}
