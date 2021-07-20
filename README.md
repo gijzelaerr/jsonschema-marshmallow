@@ -13,8 +13,11 @@ jsonschema-marshmallow has two modes, dynamic and codegen.
 
 ### dynamic mode
 ```python
-from jsonschema_marshmallow.dynamic import convert
-convert('example.json')
+from json import load
+from jsonschema_marshmallow.dynamic import recurse
+
+with open('casV4.json') as f:
+    marshmallow = recurse(load(f))
 ```
 
 output:
